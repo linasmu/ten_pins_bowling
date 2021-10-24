@@ -33,7 +33,8 @@ class BowlingGame
   end
 
   def player1_turn
-    puts "#{@player1_score} taskai"
+    return game_result if @frame >= 10
+
     puts "#{@player1} first turn:"
     player1_points_1 = gets.chomp.to_i
     @player1_score += player1_points_1
@@ -54,6 +55,10 @@ class BowlingGame
     player2_points_2 = gets.chomp.to_i
     @player2_score += player2_points_2
     @frame += 0.5
-    player2_turn
+    player1_turn
+  end
+
+  def game_result
+    puts "#{@player1} score is #{@player1_score} and #{@player2} score is #{@player2_score}"
   end
 end
