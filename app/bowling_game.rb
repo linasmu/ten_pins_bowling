@@ -58,6 +58,30 @@ class BowlingGame
   end
 
   def game_result
-    puts "#{@player1} score is #{@player1_score} and #{@player2} score is #{@player2_score}"
+    player1_final_score = final_score(@player1_score).sum
+    player2_final_score = final_score(@player2_score).sum
+    puts "#{@player1} score is #{player1_final_score} and #{@player2} score is #{player2_final_score}"
+  end
+
+  def final_score(player_score)
+    player_score.each_with_index.map do |score, i|
+      if score[0] == 10
+        if !player_score[i + 1].nil?
+          score[0] += player_score[i + 1][0]
+        end
+        
+        if !player_score[i + 1].nil? && !player_score[i + 1][1].nil?
+          score[0] += player_score[i + 1][1]
+        elsif !player_score[i + 2].nil?
+          score[0] += player_score[i + 2][0]
+        end
+        score[0]
+      elsif score[0] + score[1] == 10 && !player_score[i + 1].nil? && !player_score[i + 1][0].nil?
+        score = score.sum + player_score[i + 1][0]
+        score
+      else
+        score.sum
+      end
+    end
   end
 end
