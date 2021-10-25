@@ -2,7 +2,7 @@ class BowlingGame
   def initialize
     @player1_score = 0
     @player2_score = 0
-    @frame = 1
+    @frame = 0
   end
 
   def start_game
