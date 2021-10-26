@@ -69,7 +69,7 @@ class BowlingGame
         if !player_score[i + 1].nil?
           score[0] += player_score[i + 1][0]
         end
-        
+
         if !player_score[i + 1].nil? && !player_score[i + 1][1].nil?
           score[0] += player_score[i + 1][1]
         elsif !player_score[i + 2].nil?
